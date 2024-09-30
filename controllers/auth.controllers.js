@@ -42,7 +42,8 @@ try {
         role: user.role
     };
 
-    const token = sign(payload, process.env.JWT_SECRET, {expiresIn: "30m"});
+    // const token = sign(payload, process.env.JWT_SECRET, {expiresIn: "30m"});
+    const token = sign(payload, 'secret', {expiresIn: "30m"});
 
     res.status(200).json({ token, name: user.name, role: user.role, id: user.id });
 } catch (error) {

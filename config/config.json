@@ -1,23 +1,23 @@
 {
   "development": {
     "username": "postgres",
-    "password": "postgres",
-    "database": "my_movie_app",
+    "password": "root",
+    "database": "dbdev",
     "host": "127.0.0.1",
-    "port":"54321",
+    "port":"5432",
     "dialect": "postgres"
   },
   "test": {
     "username": "postgres",
-    "password": "postgres",
+    "password": "root",
     "database": "my_movie_app_test",
     "host": "127.0.0.1",
-    "port":"54321",
+    "port":"5432",
     "dialect": "postgres"
   },
   "production": {
-    "username": "root",
-    "password": null,
+    "username": "postgres",
+    "password": "root",
     "database": "database_production",
     "host": "127.0.0.1",
     "dialect": "mysql"

@@ -8,7 +8,7 @@ const auth = async (req, res, next) => {
         if(!authorization) throw new UnauthenticatedError("Please login first");
 
         const [type, token] = authorization.split(" ");             //membaca & split token
-        const decoded = verify(token, process.env.JWT_SECRET);      //memverify token
+        const decoded = verify(token, 'secret');      //memverify token
         const user = await User.findOne({where: {email: decoded.email}});    //memverify user 
         
         if(!user) throw new Error("User is not registered");

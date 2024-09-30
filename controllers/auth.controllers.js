@@ -4,6 +4,10 @@ const UnauthenticatedError = require("../errors/UnAuthenticatedError");
 const {sign} = require ("jsonwebtoken");
 
 
+exports.landingPage = async(req, res, next) => {
+    res.status(200).json({AppName: "Movies App", Message : "Welcome"});
+}
+
 exports.register = async (req, res, next) => {
     const {name, username, email, phoneNumber, address, role, password} = req.body;
     

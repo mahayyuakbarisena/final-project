@@ -15,7 +15,7 @@ exports.register = async (req, res, next) => {
         const salt = await genSalt(10);
         const hashedPassword = await hash(password, salt);
         const user = await User.create({ name, username, email, phoneNumber, address, role, password:hashedPassword });
-        // res.status(201).json(user);
+        
         res.status(201).json({message: "Success creating new user", 
             id: user.id,
             name: user.name, 
@@ -46,7 +46,6 @@ try {
         role: user.role
     };
 
-    // const token = sign(payload, process.env.JWT_SECRET, {expiresIn: "30m"});
     const token = sign(payload, 'secret', {expiresIn: "30m"});
 
     res.status(200).json({ token, name: user.name, role: user.role, id: user.id });

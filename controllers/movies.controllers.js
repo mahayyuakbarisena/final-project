@@ -6,7 +6,7 @@ exports.index = async (req, res, next) => {
         const movies = await Movie.findAll();
         res.status(200).json(movies);
     } catch (error) {
-        next(error)  //akan dihandle midlleware error
+        next(error)
     }
 };
 

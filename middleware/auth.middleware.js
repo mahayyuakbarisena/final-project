@@ -7,14 +7,13 @@ const auth = async (req, res, next) => {
         const { authorization } = req.headers;
         if(!authorization) throw new UnauthenticatedError("Please login first");
 
-        const [type, token] = authorization.split(" ");             //membaca & split token
-        const decoded = verify(token, 'secret');      //memverify token
-        const user = await User.findOne({where: {email: decoded.email}});    //memverify user 
+        const [type, token] = authorization.split(" ");  
+        const decoded = verify(token, 'secret'); 
+        const user = await User.findOne({where: {email: decoded.email}}); 
         
         if(!user) throw new Error("User is not registered");
         req.user = user;
     } catch (error) {
-        // return res.status(401).json({message: error.message})
         next(error);
     }
     next();
